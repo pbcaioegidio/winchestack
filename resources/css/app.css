@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+/* Tema claro/escuro por classe (.dark no <html>), controlado pelo useTheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Faz scrollbars e controles nativos (inputs/selects) seguirem o tema. */
+html { color-scheme: light; }
+html.dark { color-scheme: dark; }
+
+/* Remove setas do input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../**/*.vue';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}

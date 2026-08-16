@@ -1,0 +1,54 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Winchestack — ambiente de DESENVOLVIMENTO local (Docker)
+#
+# Sobe PostgreSQL + Redis em portas próprias (5433 / 6380) para NÃO conflitar
+# com o watchtower (que usa 5432 e o Redis do host em 6379). Assim os dois
+# projetos rodam lado a lado na mesma máquina sem se atrapalhar.
+#
+# O app Laravel + Vite rodam no host (PHP 8.5 / Node 24).
+# Em produção o Postgres/Redis costumam rodar no próprio host, sem este Compose.
+#
+#   docker compose up -d        # sobe Postgres + Redis
+#   docker compose down         # para (mantém os dados nos volumes)
+#   docker compose down -v      # para e APAGA os dados
+# ─────────────────────────────────────────────────────────────────────────────
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: winchestack-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_DATABASE:-winchestack}
+      POSTGRES_USER: ${DB_USERNAME:-winchestack}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-winchestack}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - winchestack-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-winchestack} -d ${DB_DATABASE:-winchestack}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: winchestack-redis
+    restart: unless-stopped
+    command: ["redis-server", "--save", "60", "1", "--appendonly", "no"]
+    ports:
+      - "127.0.0.1:6380:6379"
+    volumes:
+      - winchestack-redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  winchestack-pgdata:
+    name: winchestack-pgdata
+  winchestack-redisdata:
+    name: winchestack-redisdata

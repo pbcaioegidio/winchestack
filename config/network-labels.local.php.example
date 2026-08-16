@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Copie para network-labels.local.php e preencha com os MACs da sua rede.
+ * O arquivo .local.php fica fora do git.
+ */
+return [
+    'labels' => [
+        'aa:bb:cc:dd:ee:01' => ['name' => 'TV da sala', 'kind' => 'tv'],
+        'aa:bb:cc:dd:ee:02' => ['name' => 'Notebook', 'kind' => 'computador'],
+        'aa:bb:cc:dd:ee:03' => ['name' => 'Câmera da entrada', 'kind' => 'camera'],
+    ],
+    'oui' => [
+        'aa:bb:cc' => ['vendor' => 'Exemplo', 'kind' => 'dispositivo'],
+    ],
+];

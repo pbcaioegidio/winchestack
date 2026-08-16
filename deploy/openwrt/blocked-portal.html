@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ACESSO BLOQUEADO</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fb7185' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cline x1='5.6' y1='5.6' x2='18.4' y2='18.4'/%3E%3C/svg%3E">
+<style>
+  :root{ color-scheme: dark; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;
+    background:#0a0e1a;color:#e5e7eb;padding:24px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;
+    background:radial-gradient(70% 55% at 50% -5%, rgba(244,63,94,.12), transparent 60%);
+  }
+  .card{
+    position:relative;width:100%;max-width:440px;text-align:center;
+    background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+    border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:44px 38px;
+    box-shadow:0 24px 70px -24px rgba(0,0,0,.7);
+  }
+  .icon{
+    width:74px;height:74px;margin:0 auto 24px;border-radius:19px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(244,63,94,.12);border:1px solid rgba(244,63,94,.28);
+  }
+  .icon svg{width:36px;height:36px;stroke:#fb7185}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fb7185;margin-bottom:16px}
+  .lead{font-size:20px;font-weight:600;color:#f8fafc;line-height:1.35;margin-bottom:12px;text-wrap:balance}
+  .desc{font-size:14.5px;line-height:1.6;color:#94a3b8;max-width:32ch;margin:0 auto;text-wrap:balance}
+  .status{
+    margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.07);
+    display:flex;align-items:center;justify-content:center;gap:9px;font-size:13px;color:#cbd5e1;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:#f43f5e;box-shadow:0 0 0 4px rgba(244,63,94,.14)}
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+      </svg>
+    </div>
+    <p class="eyebrow">Acesso bloqueado</p>
+    <h1 class="lead">Seu acesso &agrave; internet foi bloqueado</h1>
+    <p class="desc">Fale com o administrador da rede para liberar este dispositivo.</p>
+    <div class="status"><span class="dot"></span> Sem conex&atilde;o com a internet</div>
+  </main>
+</body>
+</html>
